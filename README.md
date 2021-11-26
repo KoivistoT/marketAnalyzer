@@ -1,5 +1,9 @@
 # marketAnalyze
 
+## General
+
+This API backend use CoinGecko API and analyze market values for a given date range.
+
 ## API url
 
 https://marketanalyze.herokuapp.com/api
@@ -13,12 +17,12 @@ Expected output: The maximum amount of days bitcoin’s price was decreasing in 
 
 - /highest_trading_volume
 
-Date within a given date range had the highest trading volume
+Date within a given date range had the highest trading volume.
 Expected output: The date with the highest trading volume and the volume on that day in euros.
 
 - /buy_and_sell
 
-The best day for buying bitcoin, and the best day for selling
+The best day for buying bitcoin, and the best day for selling within a given date range.
 Expected output: A pair of days: The day to buy and the day to sell.
 
 ## Request body (required)
