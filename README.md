@@ -25,7 +25,7 @@ Expected output: The date with the highest trading volume and the volume on that
 The best day for buying bitcoin, and the best day for selling within a given date range.
 Expected output: A pair of days: The day to buy and the day to sell.
 
-## Request body (required)
+## Request body, JSON format (required)
 
 `{"startDate": "YYYY-MM-DD", "endDate": "YYYY-MM-DD"}`
 
