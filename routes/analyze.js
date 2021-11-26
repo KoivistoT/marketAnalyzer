@@ -6,7 +6,7 @@ const countBuyAndSellDates = require("../counters/countBuyAndSellDates");
 const countHighestTradingVolume = require("../counters/countHighestTradingVolume");
 const countLongestBearish = require("../counters/countLongestBearish");
 const getDailyValues = require("../functions/getDailyValues");
-const validate = require("../validate/dateRange");
+const validate = require("../validate/reqBody");
 const noDataMessage = `Could not provide any data with the given dates.`;
 
 router.get(
