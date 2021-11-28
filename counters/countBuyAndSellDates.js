@@ -1,31 +1,40 @@
 const unixTimeStampToDate = require("../utils/unixTimestampToDate");
 const getMax = require("../utils/getMax");
 const countLongestBearish = require("./countLongestBearish");
+const isAllSame = require("../utils/isAllSame");
+const getMin = require("../utils/getMin");
 
 module.exports = function countBuyAndSellDates(data) {
-  if (data.length - 1 === countLongestBearish(data))
-    return "There is no any good day to buy.";
+  const noGoodDayMessage = "There is no any good day to buy.";
+  if (data.length - 1 === countLongestBearish(data)) return noGoodDayMessage;
+  if (isAllSame(data)) return noGoodDayMessage;
 
-  let biggestValueDifference = 0;
   let buy = [null, null];
   let sell = [null, null];
-
+  let biggestDifference = 0;
+  let i = 0;
   const arrayLength = data.length;
 
-  for (let i = 0; i < arrayLength; i++) {
+  while (i < arrayLength) {
     const restOfArray = data.slice(i, arrayLength);
-    const currentDay = data[i];
+    const maxValue = getMax(restOfArray);
+    const maxIndex = restOfArray.findIndex((x) => x === maxValue);
+    const currentArray = restOfArray.slice(0, maxIndex);
 
-    if (restOfArray.some((day) => day[1] > currentDay[1])) {
-      const maxAfter = getMax(restOfArray);
-      const difference = maxAfter[1] - currentDay[1];
-
-      if (difference > biggestValueDifference) {
-        biggestValueDifference = difference;
-        buy = currentDay;
-        sell = maxAfter;
-      }
+    if (currentArray.length === 0) {
+      i = i + maxIndex + 1;
+      continue;
     }
+
+    const minValue = getMin(currentArray);
+    const difference = maxValue[1] - minValue[1];
+
+    if (difference > biggestDifference) {
+      biggestDifference = difference;
+      buy = minValue;
+      sell = maxValue;
+    }
+    i = i + maxIndex + 1;
   }
 
   return {
