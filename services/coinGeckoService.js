@@ -1,4 +1,4 @@
-const { appFetch } = require("../functions/appFetch");
+const { appFetch } = require("../api/appFetch");
 const { editTimeRange } = require("../utils/editTimeRange");
 
 apiUrl = "https://api.coingecko.com/api/v3";

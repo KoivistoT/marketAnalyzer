@@ -1,3 +1,3 @@
-module.exports = function isAllSame(data) {
-  return data.every((x) => x[1] === data[0][1]);
+module.exports = function isAllSame(data, key) {
+  return data.every((day) => day[key] === data[0][key]);
 };

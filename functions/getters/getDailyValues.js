@@ -1,7 +1,11 @@
 const countTotalDays = require("../counters/countTotalDays");
+const DATA_KEYS = require("../../config/dataKeys");
 
 module.exports = function getDailyValues(data) {
-  const totalDays = countTotalDays(data[0][0], data[data.length - 1][0]);
+  const totalDays = countTotalDays(
+    data[DATA_KEYS.first_object][DATA_KEYS.date],
+    data[data.length - 1][DATA_KEYS.date]
+  );
 
   let dailyValues = data;
 
@@ -9,14 +13,14 @@ module.exports = function getDailyValues(data) {
     dailyValues = data.reduce(
       (collector, current) => {
         if (
-          new Date(current[0]).getUTCDay() !==
-          new Date(collector[collector.length - 1][0]).getUTCDay()
+          new Date(current[DATA_KEYS.date]).getUTCDay() !==
+          new Date(collector[collector.length - 1][DATA_KEYS.date]).getUTCDay()
         )
           collector.push(current);
 
         return collector;
       },
-      [data[0]]
+      [data[DATA_KEYS.first_object]]
     );
   }
 

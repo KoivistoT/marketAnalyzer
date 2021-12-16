@@ -2,10 +2,10 @@ const express = require("express");
 const router = express.Router();
 const asyncMiddleware = require("../middleware/async");
 const { coinGecko } = require("../services/coinGeckoService");
-const countBuyAndSellDates = require("../counters/countBuyAndSellDates");
-const countHighestTradingVolume = require("../counters/countHighestTradingVolume");
-const countLongestBearish = require("../counters/countLongestBearish");
-const getDailyValues = require("../functions/getDailyValues");
+const countBuyAndSellDates = require("../functions/counters/countBuyAndSellDates");
+const countHighestTradingVolume = require("../functions/counters/countHighestTradingVolume");
+const countLongestBearish = require("../functions/counters/countLongestBearish");
+const getDailyValues = require("../functions/getters/getDailyValues");
 const validate = require("../validate/reqBody");
 const noDataMessage = `Could not provide any data with the given dates.`;
 

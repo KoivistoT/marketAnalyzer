@@ -31,4 +31,11 @@ Expected output: A pair of days: The day to buy and the day to sell.
 
 ## Example curl
 
-`curl -X GET https://marketanalyze.herokuapp.com/api/analyze/buy_and_sell -H 'Content-Type: application/json' -d ' {"startDate": "2020-03-01", "endDate": "2021-08-01"}'`
+- /longest_bearish
+  `curl -X GET https://marketanalyze.herokuapp.com/api/analyze/longest_bearish -H 'Content-Type: application/json' -d ' {"startDate": "2020-03-01", "endDate": "2021-08-01"}'`
+
+- /highest_trading_volume
+  `curl -X GET https://marketanalyze.herokuapp.com/api/analyze/highest_trading_volume -H 'Content-Type: application/json' -d ' {"startDate": "2020-03-01", "endDate": "2021-08-01"}'`
+
+- /buy_and_sell
+  `curl -X GET https://marketanalyze.herokuapp.com/api/analyze/buy_and_sell -H 'Content-Type: application/json' -d ' {"startDate": "2020-03-01", "endDate": "2021-08-01"}'`
