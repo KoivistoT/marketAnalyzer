@@ -13,8 +13,8 @@ module.exports = function getDailyValues(data) {
     dailyValues = data.reduce(
       (collector, current) => {
         if (
-          new Date(current[DATA_KEYS.date]).getUTCDay() !==
-          new Date(collector[collector.length - 1][DATA_KEYS.date]).getUTCDay()
+          new Date(current[DATA_KEYS.date]).getUTCDate() !==
+          new Date(collector[collector.length - 1][DATA_KEYS.date]).getUTCDate()
         )
           collector.push(current);
 
