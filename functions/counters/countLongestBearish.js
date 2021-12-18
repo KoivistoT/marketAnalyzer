@@ -9,8 +9,9 @@ module.exports = function countLongestBearish(data) {
       ? (currentLenght += 1)
       : (currentLenght = 0);
 
-    if (currentLenght > longestBearishLenght)
+    if (currentLenght > longestBearishLenght) {
       longestBearishLenght = currentLenght;
+    }
 
     return current;
   });

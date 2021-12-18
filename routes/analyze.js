@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const asyncMiddleware = require("../middleware/async");
-const { coinGecko } = require("../services/coinGeckoService");
+const { coinGecko } = require("../services/coinGecko");
 const countBuyAndSellDates = require("../functions/counters/countBuyAndSellDates");
 const countHighestTradingVolume = require("../functions/counters/countHighestTradingVolume");
 const countLongestBearish = require("../functions/counters/countLongestBearish");
@@ -35,6 +35,7 @@ router.get(
     const { total_volumes, error: fetchError } = await coinGecko.getRange(
       req.body
     );
+
     if (fetchError) return res.status(404).send(fetchError);
     if (total_volumes.length === 0) return res.status(404).send(noDataMessage);
 

@@ -7,22 +7,24 @@ module.exports = function getDailyValues(data) {
     data[data.length - 1][DATA_KEYS.date]
   );
 
-  let dailyValues = data;
-
-  if (totalDays < data.length) {
-    dailyValues = data.reduce(
-      (collector, current) => {
-        if (
-          new Date(current[DATA_KEYS.date]).getUTCDate() !==
-          new Date(collector[collector.length - 1][DATA_KEYS.date]).getUTCDate()
-        )
-          collector.push(current);
-
-        return collector;
-      },
-      [data[DATA_KEYS.first_object]]
-    );
+  if (totalDays === data.length) {
+    return data;
   }
+
+  let dailyValues = [...data];
+
+  dailyValues = data.reduce(
+    (collector, current) => {
+      if (
+        new Date(current[DATA_KEYS.date]).getUTCDate() !==
+        new Date(collector[collector.length - 1][DATA_KEYS.date]).getUTCDate()
+      )
+        collector.push(current);
+
+      return collector;
+    },
+    [data[DATA_KEYS.first_object]]
+  );
 
   return dailyValues;
 };

@@ -5,6 +5,7 @@ apiUrl = "https://api.coingecko.com/api/v3";
 
 getRange = async (data, id = "bitcoin", currency = "eur") => {
   const editedData = editTimeRange(data);
+
   const { startDate, endDate } = editedData;
 
   const endpoint = `/coins/${id}/market_chart/range?vs_currency=${currency}&from=${startDate}&to=${endDate}`;
