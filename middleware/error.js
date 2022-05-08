@@ -1,3 +1,3 @@
-module.exports = function (err, req, res, next) {
+module.exports = function (res) {
   res.status(500).send("Something failed.");
 };

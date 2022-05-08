@@ -5,15 +5,21 @@ const isAllSame = require("../../utils/isAllSame");
 const getMin = require("../../utils/getMin");
 const DATA_KEYS = require("../../config/dataKeys");
 
-const NO_GOOD_DAY_MESSAGE = "There is no any good day to buy.";
+const NO_GOOD_DAY = {
+  message: "There is no any good day to buy.",
+  buy: null,
+  sell: null,
+};
+
+const FOUND_MESSAGE = "Here is dates to buy and sell.";
 
 module.exports = function countBuyAndSellDates(data) {
   if (data.length - 1 === countLongestBearish(data)) {
-    return NO_GOOD_DAY_MESSAGE;
+    return NO_GOOD_DAY;
   }
 
   if (isAllSame(data, DATA_KEYS.trading_volume)) {
-    return NO_GOOD_DAY_MESSAGE;
+    return NO_GOOD_DAY;
   }
 
   let buy = [null, null];
@@ -46,6 +52,7 @@ module.exports = function countBuyAndSellDates(data) {
   }
 
   return {
+    message: FOUND_MESSAGE,
     buy: unixTimeStampToDate(buy[DATA_KEYS.date]),
     sell: unixTimeStampToDate(sell[DATA_KEYS.date]),
   };

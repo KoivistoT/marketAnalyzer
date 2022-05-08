@@ -11,8 +11,6 @@ module.exports = function getDailyValues(data) {
     return data;
   }
 
-  let dailyValues = [...data];
-
   dailyValues = data.reduce(
     (collector, current) => {
       if (

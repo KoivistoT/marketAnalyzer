@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 
-module.exports.appFetch = async (url) => {
+module.exports.appFetch =  (url) => {
   return await fetch(url, {
     method: "GET",
     headers: {
